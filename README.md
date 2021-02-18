@@ -1,6 +1,17 @@
+# Clicker Game
+A simple clicker game built with React, CSS and Typescript using create-react-app.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## General Information
+The aim of the game is simple. Earn points by clicking on the randomized animal image and gradually purchase upgrades to increase points earned per click. 
+Eventually, you are able to obtain automatic upgrades which allows you to
+accumulate points on an automated basis. Furthermore, note that only standard (not automatic) upgrades are saved upon exiting or refreshing the web page.
+
+## Launch
+This project is hosted using netlify at ... 
 
 ## Available Scripts
 

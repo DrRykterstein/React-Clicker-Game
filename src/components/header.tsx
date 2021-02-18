@@ -12,9 +12,9 @@ const Header: React.FC = () => {
 
   // Resets costs object back to its default state
   const handleCostsReset = () => {
-    if (counter >= 1000) {
+    if (counter >= 10000000) {
       setCosts(defaultCosts);
-      setCounter(counter - 1000);
+      setCounter(counter - 10000000);
     }
   }
 

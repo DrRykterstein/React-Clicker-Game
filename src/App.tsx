@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { API_KEY } from './private/apiKey';
 import axios from 'axios';
 import { CounterProvider } from './contexts/counterContext';
 import { CostsProvider } from './contexts/costsContext';
@@ -14,7 +13,8 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchClickerImage = async () => {
       try {
-        const config: object = {'Authorization': API_KEY}
+        console.log(process.env.REACT_APP_API_KEY);
+        const config: object = {'Authorization': process.env.REACT_APP_API_KEY}
         const { data }= await axios.get(
           'https://api.pexels.com/v1/search?query=animal', 
           {headers: config}
