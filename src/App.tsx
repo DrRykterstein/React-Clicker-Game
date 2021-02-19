@@ -13,7 +13,6 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchClickerImage = async () => {
       try {
-        console.log(process.env.REACT_APP_API_KEY);
         const config: object = {'Authorization': process.env.REACT_APP_API_KEY}
         const { data }= await axios.get(
           'https://api.pexels.com/v1/search?query=animal', 
