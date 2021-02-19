@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@heroku/buildpack-registry": "^1.0.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
@@ -10,9 +11,13 @@
     "@types/node": "^14.14.25",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
+    "async-file": "^2.0.2",
     "axios": "^0.21.1",
+    "cli-ux": "^4.9.3",
     "dotenv": "^8.2.0",
+    "got": "^8.3.2",
     "heroku": "^7.47.12",
+    "phoenix": "^1.5.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
@@ -42,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "15.x"
   }
 }
