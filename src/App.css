@@ -2,10 +2,11 @@
   --app-background: #e0e4f5;
   --header-background: #333;
   --btn: #1D58FE;
-  --costs-title: #00000033;
-  --costs-border: #d6daeb;
-  --costs-item: #d2d6e7;
+  --upgrades-border: #d6daeb;
+  --upgrades-item: #d2d6e7;
   --shop-background: #3D3D3D;
+  --purple: #503eb9;
+  --darkGrey: rgb(37, 37, 37);
 }
 
 * {
@@ -36,21 +37,18 @@
 
 /* HEADER SECTION */
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
   background-color: var(--header-background);
   padding: .5rem 1.5rem;
   height: 140px;
 }
 
-.reset-container {
-  position: absolute;
-  float: left;
-  line-height: 124px;
-}
-
 .reset-btn {
   font-size: 22px;
-  border: 1px solid var(--btn);
+  border: 2px solid var(--btn);
   background-color: var(--btn);
   cursor: pointer;
   padding: 12px 15px;
@@ -82,24 +80,44 @@
   font-size: 35px;
 }
 
+.increment-container {
+  color: #ffffff;
+}
+
+.increment {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--darkGrey);
+  border-radius: 5px;
+  padding: .5rem;
+  margin: .5rem 0;
+  cursor: default;
+}
+
+.normal-increment {
+  background-color: var(--darkGrey);
+}
+
+.increment > h3 {
+  margin-right: .35rem;
+  font-size: 20px;
+}
+
+.increment > p {
+  font-size: 22px;
+}
+
 /* SHOP SECTION */
 .shop-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1rem;
-  border-bottom: 4px solid var(--costs-border);
+  border-bottom: 4px solid var(--upgrades-border);
 }
 
 .shop-container > * {
   margin: .5rem 0;
-}
-
-.shop-title {
-  text-align: center; 
-  font-size: 36px;
-  color: var(--costs-title);
-  text-decoration: underline;
 }
 
 .shop-inner-container {
@@ -117,7 +135,7 @@
   margin: .25rem .5rem;
   padding: .5rem;
   border-radius: 15px;
-  background-color: var(--costs-item);
+  background-color: var(--upgrades-item);
   cursor: pointer;
   z-index: 3;
   flex-shrink: 2;
@@ -140,7 +158,7 @@
 }
 
 .shop-upgrade-4 {
-  border: 2px solid #503eb9;
+  border: 2px solid var(--purple);
 }
 
 .shop-upgrade-5 {
@@ -177,6 +195,12 @@
   width: 100%;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+  .increment-container {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 900px) {

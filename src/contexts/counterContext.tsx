@@ -1,6 +1,6 @@
 import { useState, createContext, Dispatch, SetStateAction, useEffect } from "react";
 
-// Initialize Alias' for set state types
+// Initialize Aliases for setState/dispatcher types
 type counterDispatcher<S> = Dispatch<SetStateAction<S>>;
 type normalIncrementDispatcher<S> = Dispatch<SetStateAction<S>>;
 type autoIncrementDispatcher<S> = Dispatch<SetStateAction<S>>;

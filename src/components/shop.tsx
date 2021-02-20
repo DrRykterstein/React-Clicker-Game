@@ -27,7 +27,7 @@ const Shop: React.FC = () => {
     
           // Update normal upgrade cost amounts
           let clonedUpgrades = { ...upgrades };
-          clonedUpgrades.normal[upgradeName].amount = Math.round(normal[upgradeName].amount * 1.1);
+          clonedUpgrades.normal[upgradeName].amount = Math.round(normal[upgradeName].amount * 1.2);
           setUpgrades(clonedUpgrades);
         }
       } else {
@@ -40,7 +40,7 @@ const Shop: React.FC = () => {
     
           // Update auto upgrade cost amounts
           let clonedUpgrades = { ...upgrades };
-          clonedUpgrades.auto[upgradeName].amount = Math.round(auto[upgradeName].amount * 1.2);
+          clonedUpgrades.auto[upgradeName].amount = Math.round(auto[upgradeName].amount * 1.3);
           setUpgrades(clonedUpgrades);
         }
       }  

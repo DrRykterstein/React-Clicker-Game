@@ -14,7 +14,7 @@ const App: React.FC = () => {
       try {
         const config: object = {'Authorization': process.env.REACT_APP_API_KEY}
         const { data }= await axios.get(
-          'https://api.pexels.com/v1/search?query=animal', 
+          'https://api.pexels.com/v1/search?query=predator&orientation=landscape', 
           {headers: config}
         );
         // Initialize and store random photo within clicker state
