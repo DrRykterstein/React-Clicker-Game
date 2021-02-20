@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CounterProvider } from './contexts/counterContext';
-import { CostsProvider } from './contexts/costsContext';
+import { UpgradesProvider } from './contexts/upgradesContext';
 import Header from './components/header';
-import Costs from './components/costs';
-import Clicker from './components/clicker';
 import Shop from './components/shop';
+import Clicker from './components/clicker';
 
 const App: React.FC = () => {
   const [clicker, setClicker] = useState("");
@@ -37,11 +36,10 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <CounterProvider>
-        <CostsProvider>
+        <UpgradesProvider>
           <Header />
           <Shop />
-          <Costs />
-        </CostsProvider>
+        </UpgradesProvider>
         <Clicker clicker={clicker} />
       </CounterProvider>
     </div>

@@ -11,7 +11,7 @@ Eventually, you are able to obtain automatic upgrades which allows you to
 accumulate points on an automated basis. Furthermore, note that only standard (not automatic) upgrades are saved upon exiting or refreshing the web page.
 
 ## Launch
-This project is hosted using netlify at ... 
+This project is hosted using Heroku at rio-clicker-game.herokuapp.com
 
 ## Available Scripts
 

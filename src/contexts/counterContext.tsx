@@ -2,30 +2,36 @@ import { useState, createContext, Dispatch, SetStateAction, useEffect } from "re
 
 // Initialize Alias' for set state types
 type counterDispatcher<S> = Dispatch<SetStateAction<S>>;
-type upgradeDispatcher<S> = Dispatch<SetStateAction<S>>;
+type normalIncrementDispatcher<S> = Dispatch<SetStateAction<S>>;
+type autoIncrementDispatcher<S> = Dispatch<SetStateAction<S>>;
 
 // Define types for state values in context
 export type CounterContext = {
   counter: number;
-  upgrade: number;
+  normalIncrement: number;
+  autoIncrement: number;
   setCounter: counterDispatcher<number>;
-  setUpgrade: upgradeDispatcher<number>;
+  setNormalIncrement: normalIncrementDispatcher<number>;
+  setAutoIncrement: autoIncrementDispatcher<number>;
   handleIncrement: () => void;
 }
 
 // Initialize counter context
 export const CounterContext = createContext<CounterContext>({
   counter: 0,
-  upgrade: 1,
+  normalIncrement: 1,
+  autoIncrement: 0,
   setCounter: (): void => {},
-  setUpgrade: (): void => {},
+  setNormalIncrement: (): void => {},
+  setAutoIncrement: (): void => {},
   handleIncrement: (): void => {}
 });
 
 // Create counter provider component to store context state
 export const CounterProvider: React.FC<{}> = ({ children }) => {
   const [counter, setCounter] = useState<number>(0);
-  const [upgrade, setUpgrade] = useState<number>(1);
+  const [normalIncrement, setNormalIncrement] = useState<number>(1);
+  const [autoIncrement, setAutoIncrement] = useState<number>(0);
 
   // Retrieve counter and upgrade data from local storage
   useEffect(() => {
@@ -33,7 +39,8 @@ export const CounterProvider: React.FC<{}> = ({ children }) => {
     
     if (data) {
       setCounter(parseInt(JSON.parse(data).counter));
-      setUpgrade(parseInt(JSON.parse(data).upgrade));
+      setNormalIncrement(parseInt(JSON.parse(data).normalIncrement));
+      setAutoIncrement(parseInt(JSON.parse(data).autoIncrement));
     } 
   }, []);
 
@@ -41,14 +48,25 @@ export const CounterProvider: React.FC<{}> = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('counter-data', JSON.stringify({
       counter: counter,
-      upgrade: upgrade
+      normalIncrement: normalIncrement,
+      autoIncrement: autoIncrement
     }));
   });
 
-  const handleIncrement = () => setCounter(counter + upgrade);
+  // Handle interval for automatic increments
+  useEffect(() => {
+    autoIncrement !== 0 && setInterval(() => {
+      setCounter(prevCounter => prevCounter + autoIncrement);
+    }, 1000);
+  }, [autoIncrement]);
+
+  // Handle normal increment
+  const handleIncrement = () => setCounter(counter + normalIncrement);
 
   return (
-    <CounterContext.Provider value={{ counter, upgrade, setCounter, setUpgrade, handleIncrement }}>
+    <CounterContext.Provider value={{ 
+      counter, normalIncrement, autoIncrement, setCounter, setNormalIncrement, setAutoIncrement, handleIncrement 
+    }}>
       {children}
     </CounterContext.Provider>
   );
