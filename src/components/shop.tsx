@@ -59,7 +59,7 @@ const Shop: React.FC = () => {
             <span 
               key={idx} 
               data-upgrade={upgrade}
-              className={`shop-upgrade shop-upgrade-${Math.floor(idx / 3) + typeIdx}`}>
+              className={`shop-upgrade shop-upgrade-${Math.floor(idx / 3) + (typeIdx * 2)}`}>
               <h4>{upgrades[upgradeType][upgrade].name}:</h4>
               <p>{upgrades[upgradeType][upgrade].amount}</p>
             </span>
