@@ -14,7 +14,7 @@ const App: React.FC = () => {
       try {
         const config: object = {'Authorization': process.env.REACT_APP_API_KEY}
         const { data }= await axios.get(
-          'https://api.pexels.com/v1/search?query=predator&orientation=landscape', 
+          'https://api.pexels.com/v1/search?query=predator&orientation=landscape&per_page=50', 
           {headers: config}
         );
         // Initialize and store random photo within clicker state
@@ -38,9 +38,9 @@ const App: React.FC = () => {
       <CounterProvider>
         <UpgradesProvider>
           <Header />
+          <Clicker clicker={clicker} />
           <Shop />
         </UpgradesProvider>
-        <Clicker clicker={clicker} />
       </CounterProvider>
     </div>
   );

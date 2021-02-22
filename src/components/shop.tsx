@@ -15,36 +15,37 @@ const Shop: React.FC = () => {
     // Initialize current target element and upgrade name
     const el = e.target.tagName === 'SPAN' ? e.target : e.target.parentElement;
     const upgradeName = el.getAttribute("data-upgrade");
+    const multiplier = 1.3; // Dictates percentage increase of upgrade costs upon purchase
 
-    if (el.tagName === 'SPAN') {
-      if (el.parentElement.classList.contains("shop-normal-container")) {
-        const { normal } = upgrades;
-        
-        if (counter >= normal[upgradeName].amount) {  
-          // Update normal increment and counter
-          setNormalIncrement(normalIncrement + parseInt(normal[upgradeName].name.slice(1)));
-          setCounter(counter - normal[upgradeName].amount);
-    
-          // Update normal upgrade cost amounts
-          let clonedUpgrades = { ...upgrades };
-          clonedUpgrades.normal[upgradeName].amount = Math.round(normal[upgradeName].amount * 1.2);
-          setUpgrades(clonedUpgrades);
-        }
-      } else {
-        const { auto } = upgrades;
-    
-        if (counter >= auto[upgradeName].amount) {
-          // Update auto increment and counter
-          setAutoIncrement(autoIncrement + parseInt(auto[upgradeName].name.slice(1)));
-          setCounter(counter - auto[upgradeName].amount);
-    
-          // Update auto upgrade cost amounts
-          let clonedUpgrades = { ...upgrades };
-          clonedUpgrades.auto[upgradeName].amount = Math.round(auto[upgradeName].amount * 1.3);
-          setUpgrades(clonedUpgrades);
-        }
-      }  
-    }
+    if (el.tagName !== 'SPAN') return;
+
+    if (el.parentElement.classList.contains("shop-normal-container")) {
+      const { normal } = upgrades;
+      
+      if (counter >= normal[upgradeName].amount) {  
+        // Update normal increment and counter
+        setNormalIncrement(normalIncrement + parseInt(normal[upgradeName].name.slice(1)));
+        setCounter(counter - normal[upgradeName].amount);
+  
+        // Update normal upgrade cost amounts
+        let clonedUpgrades = { ...upgrades };
+        clonedUpgrades.normal[upgradeName].amount = Math.round(normal[upgradeName].amount * multiplier);
+        setUpgrades(clonedUpgrades);
+      }
+    } else {
+      const { auto } = upgrades;
+  
+      if (counter >= auto[upgradeName].amount) {
+        // Update auto increment and counter
+        setAutoIncrement(autoIncrement + parseInt(auto[upgradeName].name.slice(1)));
+        setCounter(counter - auto[upgradeName].amount);
+  
+        // Update auto upgrade cost amounts
+        let clonedUpgrades = { ...upgrades };
+        clonedUpgrades.auto[upgradeName].amount = Math.round(auto[upgradeName].amount * multiplier);
+        setUpgrades(clonedUpgrades);
+      }
+    }  
   }
 
   return (
@@ -58,7 +59,7 @@ const Shop: React.FC = () => {
             <span 
               key={idx} 
               data-upgrade={upgrade}
-              className={`shop-upgrade shop-upgrade-${Math.floor(idx / 3 + (typeIdx * 2))}`}>
+              className={`shop-upgrade shop-upgrade-${Math.floor(idx / 3) + typeIdx}`}>
               <h4>{upgrades[upgradeType][upgrade].name}:</h4>
               <p>{upgrades[upgradeType][upgrade].amount}</p>
             </span>

@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   const { counter, normalIncrement, autoIncrement, setCounter } = counterContext;
   const { resetUpgradesAmount, setUpgrades, setResetUpgradesAmount } = upgradesContext;
 
-  // Reverts upgrades object back to its initial state
+  // Revert upgrades object back to its initial state
   const handleCostsReset = () => {
     if (counter >= resetUpgradesAmount) {
       setUpgrades({
@@ -26,25 +26,27 @@ const Header: React.FC = () => {
           fourty: { name: "+40", amount: 500000 },
           fifty: { name: "+50", amount: 1000000 },
           seventyFive: { name: "+75", amount: 5000000 },
-          hundred: { name: "+100", amount: 10000000 }
+          hundred: { name: "+100", amount: 10000000 },
+          thousand: { name: "+1000", amount: 100000000 }
         },
         auto: {
           one: { name: "^1", amount: 10000 },
-          three: { name: "^3", amount: 25000 },
-          five: { name: "^5", amount: 50000 },
-          ten: { name: "^10", amount: 100000 },
-          twentyFive: { name: "^25", amount: 500000 },
-          fifty: { name: "^50", amount: 1000000 },
-          hundred: { name: "^100", amount: 5000000 },
-          twoHundredFifty: { name: "^500", amount: 10000000 },
-          fiveHundred: { name: "^1000", amount: 50000000 },
-          thousand: { name: "^2500", amount: 100000000 },
-          fiveThousand: { name: "^5000", amount: 500000000 },
-          tenThousand: { name: "^10000", amount: 1000000000 }
+          three: { name: "^3", amount: 50000 },
+          five: { name: "^5", amount: 100000 },
+          ten: { name: "^10", amount: 500000 },
+          twentyFive: { name: "^25", amount: 1000000 },
+          fifty: { name: "^50", amount: 5000000 },
+          hundred: { name: "^100", amount: 10000000 },
+          twoHundredFifty: { name: "^250", amount: 50000000 },
+          fiveHundred: { name: "^500", amount: 100000000 },
+          thousand: { name: "^1000", amount: 1000000000 },
+          tenThousand: { name: "^10000", amount: 10000000000 },
+          hundredThousand: { name: "^100000", amount: 100000000000 },
+          million: { name: "^1000000", amount: 1000000000000 }
         }
       });
       setCounter(counter - resetUpgradesAmount);
-      setResetUpgradesAmount(Math.round(resetUpgradesAmount * 2)) // Increase amount required to reset amounts
+      setResetUpgradesAmount(Math.round(resetUpgradesAmount * 2)) // Double amount required to reset amounts
     }
   }
 
@@ -63,8 +65,12 @@ const Header: React.FC = () => {
         <button className="btn counter-btn">{counter}</button>
       </div>
       <div className="increment-container">
-        <span className="increment normal-increment"><h3>+Increment:</h3><p>{normalIncrement}</p></span>
-        <span className="increment auto-increment"><h3>^Increment:</h3><p>{autoIncrement}</p></span>
+        <span className="increment normal-increment">
+          <h3>+Increment:</h3><p>{normalIncrement}</p>
+        </span>
+        <span className="increment auto-increment">
+          <h3>^Increment:</h3><p>{autoIncrement}</p>
+        </span>
       </div>
     </header>
   );

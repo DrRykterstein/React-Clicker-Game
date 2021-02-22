@@ -65,7 +65,8 @@ export const CounterProvider: React.FC<{}> = ({ children }) => {
 
   return (
     <CounterContext.Provider value={{ 
-      counter, normalIncrement, autoIncrement, setCounter, setNormalIncrement, setAutoIncrement, handleIncrement 
+      counter, normalIncrement, autoIncrement, 
+      setCounter, setNormalIncrement, setAutoIncrement, handleIncrement 
     }}>
       {children}
     </CounterContext.Provider>
