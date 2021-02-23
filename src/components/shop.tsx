@@ -15,7 +15,7 @@ const Shop: React.FC = () => {
     // Initialize current target element and upgrade name
     const el = e.target.tagName === 'SPAN' ? e.target : e.target.parentElement;
     const upgradeName = el.getAttribute("data-upgrade");
-    const multiplier = 1.2; // Dictates percentage increase of upgrade costs upon purchase
+    const multiplier = 1.3; // Dictates percentage increase of upgrade costs upon purchase
 
     if (el.tagName !== 'SPAN') return;
 
