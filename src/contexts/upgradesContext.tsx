@@ -72,7 +72,7 @@ export const UpgradesProvider: React.FC<{}> = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('upgrades-data', JSON.stringify({
       upgrades: upgrades,
-      resetUpgradesAmount: resetUpgradesAmount
+      resetUpgradesAmount: 10000000
     }));
   });
 
