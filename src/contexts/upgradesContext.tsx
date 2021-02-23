@@ -56,7 +56,7 @@ export const UpgradesProvider: React.FC<{}> = ({ children }) => {
   });
 
   // Initialize amount required to reset upgrade amounts
-  const [resetUpgradesAmount, setResetUpgradesAmount] = useState<number>(100000000);
+  const [resetUpgradesAmount, setResetUpgradesAmount] = useState<number>(10000000);
 
   // Retrieve upgrades and intervals from local storage
   useEffect(() => {
