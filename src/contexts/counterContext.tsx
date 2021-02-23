@@ -55,9 +55,12 @@ export const CounterProvider: React.FC<{}> = ({ children }) => {
 
   // Handle interval for automatic increments
   useEffect(() => {
-    autoIncrement !== 0 && setInterval(() => {
-      setCounter(prevCounter => prevCounter + autoIncrement);
-    }, 1000);
+    if (autoIncrement !== 0) {
+      let incrementer = setInterval(() => {
+        setCounter(prevCounter => prevCounter + autoIncrement);
+      }, 1000);
+      return () => clearInterval(incrementer); // Clear interval when useEffect reruns
+    } 
   }, [autoIncrement]);
 
   // Handle normal increment
