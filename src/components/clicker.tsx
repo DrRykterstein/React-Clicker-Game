@@ -16,9 +16,9 @@ const Clicker: React.FC<Props> = ({ clicker }) => {
   
   // Initiate random chance that either normal or auto increment is reduced by 1% - 10% to signify being bitten
   useEffect(() => {
-    if (normalIncrement > 10 && autoIncrement > 10) {
-      let randomNum = Math.floor(Math.random() * 6000);
-      let randomPercentage = Math.ceil(Math.random() * 10) / 100;
+    if (normalIncrement > 20 && autoIncrement > 20) {
+      let randomNum = Math.floor(Math.random() * 3000);
+      let randomPercentage = Math.ceil(Math.random() * 5) / 100;
 
       if (randomNum == 0) {
         setNormalIncrement(normalIncrement - Math.round(normalIncrement * randomPercentage));
