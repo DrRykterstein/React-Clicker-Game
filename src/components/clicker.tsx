@@ -13,22 +13,35 @@ const Clicker: React.FC<Props> = ({ clicker }) => {
   } = counterContext;
 
   const [bitten, setBitten] = useState(false); // Initialize state variable to keep track of when bites occur
+  const [biteCount, setBiteCount] = useState(0); // Counts number of bites
   
   // Initiate random chance that either normal or auto increment is reduced by 1% - 10% to signify being bitten
   useEffect(() => {
     if (normalIncrement > 20 && autoIncrement > 20) {
-      let randomNum = Math.floor(Math.random() * 4000);
+      let randomNum = Math.floor(Math.random() * 3600);
       let randomPercentage = Math.ceil(Math.random() * 5) / 100;
 
       if (randomNum == 0) {
         setNormalIncrement(normalIncrement - Math.round(normalIncrement * randomPercentage));
         setAutoIncrement(autoIncrement - Math.round(autoIncrement * randomPercentage)); 
 
-        // Trigger bitten-show class temporarily
+        // Trigger 'bitten-show' class temporarily
         setBitten(true);
         setTimeout(() => setBitten(false), 5000); 
+        setBiteCount(biteCount + 1); // Increment bite count
       } 
     }
+  });
+
+  // Retrieve number of bites from local storage
+  useEffect(() => {
+    const data = localStorage.getItem('bite-count-data');
+    data && setBiteCount(parseInt(JSON.parse(data)));
+  }, []);
+
+  // Set number of bites within local storage
+  useEffect(() => {
+    localStorage.setItem('bite-count-data', JSON.stringify(biteCount));
   });
 
   return (
